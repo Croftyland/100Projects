@@ -100,11 +100,36 @@ export const sortAll = model => async (req, res) => {
   }
 }
 
+export const searchByTitle = model => async (req, res) => {
+  try {
+    let query = {
+      $or: [
+        { title: { $regex: req.params.query } },
+        { stars: { $regex: req.params.query } }
+      ]
+    }
+    const search = await model
+      .find(query)
+      .lean()
+      .exec()
+
+    if (!search) {
+      return res.status(400).end()
+    }
+
+    return res.status(200).json({ data: search })
+  } catch (e) {
+    console.error(e)
+    res.status(400).end()
+  }
+}
+
 export const crudControllers = model => ({
   create: create(model),
   remove: remove(model),
   update: update(model),
   getById: getById(model),
   getAll: getAll(model),
-  sortAll: sortAll(model)
+  sortAll: sortAll(model),
+  searchByTitle: searchByTitle(model)
 })
