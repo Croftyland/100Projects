@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const movieSchema = new mongoose.Schema(
   {
@@ -11,8 +11,8 @@ const movieSchema = new mongoose.Schema(
     format: {
       type: String,
       required: true,
-      enum: ["VHS", "DVD", "Blue-Ray"],
-      default: "DVD"
+      enum: ['VHS', 'DVD', 'Blue-Ray'],
+      default: 'DVD'
     },
     stars: {
       type: String,
@@ -28,8 +28,8 @@ const movieSchema = new mongoose.Schema(
     }
   },
   { timestamps: true }
-);
+)
 
-movieSchema.index({ list: 1, name: 1 }, { unique: true });
+movieSchema.index({ list: 1, name: 1 }, { unique: true })
 
-export const Movie = mongoose.model("movie", movieSchema);
+export const Movie = mongoose.model('movie', movieSchema)
