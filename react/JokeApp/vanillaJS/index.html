@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Chuck Norris Joke?</title>
+</head>
+<body>
+<header class="main_header">
+    <div class="title__row-header">
+        MSI 2020
+    </div>
+    <div class="intro">
+        <div class="intro__row">
+            <div class="exclamation">Hey!</div>
+            <div class="explanation">Let's find a joke for you</div>
+        </div>
+    </div>
+</header>
+<main>
+    <section class="wrapper">
+        <div class="category__container">
+            <div class="category__item">
+                <label for="randomItem">
+                    <input id="randomItem" type="radio" name="Category" value="Random"
+                           onclick="divVisibility('Random');"><span>Random</span>
+                </label>
+                <div class="category__item--inner">
+                    <div id="Random"></div>
+                </div>
+            </div>
+            <div class="category__item">
+                <label for="categoryItem">
+                    <input id="categoryItem" type="radio" name="Category" value="Categories"
+                           onclick="divVisibility('Categories');"><span>Categories</span>
+                </label>
+                <div class="category__item--inner">
+                    <div id="Categories">
+                        <div class="tag">
+                            <input id=animal name="Type" value="animal" type=radio><label for=animal>Animal</label>
+                        </div>
+                        <div class="tag">
+                            <input id=career name="Type" value="career" type=radio><label for=career>Career</label>
+                        </div>
+                        <div class="tag">
+                            <input id=celebrity name="Type" value="celebrity" type=radio><label
+                                for=celebrity>Celebrity</label>
+                        </div>
+                        <div class="tag">
+                            <input id=dev name="Type" value="dev" type=radio><label for=dev>Dev</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="category__item">
+                <label for="searchItem">
+                    <input id="searchItem" type="radio" name="Category" value="Search"
+                           onclick="divVisibility('Search');"
+                    ><span>Search</span>
+                </label>
+                <div class="category__item--inner">
+                    <form>
+                        <div id="Search">
+                            <input type="text" placeholder="Free quote search..." value="" name="Type" class="input"
+                                   id="OWN"
+                                   required="required" pattern="[a-zA-Z ]+">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <button class="category__item--button" type="button" onclick="displayRadioValue()">
+                Chuck it up
+            </button>
+            <div id="result"></div>
+        </div>
+
+        <div class="quote__item">
+            <div class="quote__image">
+                <img src="./img/dialog.svg" alt="dialog"/>
+            </div>
+            <div class="heart__image">
+                <img src="./img/fill-heart.svg" alt="heart"/>
+            </div>
+            <div class="info">
+                <div class="info__row--header info__row">
+                    <div class="id">ID: <span class="code">XNaAxUduSw6zANDaIEab7A</span></div>
+                    <div class="info__row--image">
+                        <img src="./img/copy.svg" alt="copy"/>
+                    </div>
+                    <div class="quote">No one truly knows who's Chuck Norris' real father. No one is biologically strong
+                        enough for this. He must've conceived himself
+                    </div>
+                </div>
+                <div class="info__row--footer info__row">
+                    <div class="update">
+                        Last update<time>10:00:00</time> hours ago
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="wrapper">
+        <div class="favourite__item">
+            <input type="checkbox" id="favourite"/>
+            <label for="favourite" class="favourite">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="favourite__nav">
+                <nav>
+                    <div class="favourite__nav--header">
+                        Favourite
+                    </div>
+                    <div class="favourite__nav--image">
+                        <img src="./img/chuck.png" alt="Chuck"/>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+<script src="script.js"></script>
+</html>
