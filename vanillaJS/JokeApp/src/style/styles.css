@@ -280,6 +280,34 @@ body {
 
 }
 
+.heart__image  {
+    background-image: url("../img/heart.svg");
+    background-repeat: no-repeat;
+    display: block;
+    box-sizing: border-box;
+
+    height: 236px;
+
+}
+
+.dialog{
+    display: block;
+    box-sizing: border-box;
+
+    height: 236px;
+    background-image: url("../img/dialog.svg");
+    background-repeat: no-repeat;
+}
+
+.copy {
+    display: block;
+    box-sizing: border-box;
+    width: 180px;
+    height: 236px;
+    background-image: url("../img/fill-heart.svg");
+    background-repeat: no-repeat;
+}
+
 
 @media screen and (min-width: 1024px) {
     .favourite span {
