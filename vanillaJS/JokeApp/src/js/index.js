@@ -1,7 +1,14 @@
+import '../style/styles.css';
+import heart from '../img/heart.svg';
+import chuck from '../img/chuck.png';
+
+document.getElementById('heart').src = heart;
+document.getElementById('chuck').src = chuck;
+
 var divs = ["Random", "Categories", "Search"];
 var visibleDivId = null;
-function divVisibility(divId) {
-    if(visibleDivId === divId) {
+export function divVisibility(divId) {
+    if (visibleDivId === divId) {
         visibleDivId = null;
     } else {
         visibleDivId = divId;
@@ -21,7 +28,7 @@ function hideNonVisibleDivs() {
     }
 }
 
-function displayRadioValue() {
+ function displayRadioValue() {
     document.getElementById("result").innerHTML = "";
     var ele = document.getElementsByTagName('input');
 
@@ -36,5 +43,4 @@ function displayRadioValue() {
         }
     }
 }
-
 
