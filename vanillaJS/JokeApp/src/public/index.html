@@ -8,33 +8,33 @@
     <title>Chuck Norris Joke?</title>
 </head>
 <body>
-<header class="main_header">
-    <div class="title__row-header">
+<header class="mainHeader">
+    <div class="mainHeader__title">
         MSI 2020
     </div>
-    <div class="intro">
-        <div class="intro__row">
-            <div class="exclamation">Hey!</div>
-            <div class="explanation">Let's find a joke for you</div>
-        </div>
-    </div>
+
 </header>
 <main>
-    <section class="wrapper">
-        <div class="category__container">
+    <div class="wrapper">
+        <div class="intro">
+            <div class="intro__title">
+                <div class="intro__exclamation">Hey!</div>
+                Let's find a joke for you
+            </div>
+        </div>
+        <div class="category js-category">
             <div class="category__item">
                 <label for="randomItem">
-                    <input id="randomItem" type="radio" name="Category" value="Random"
-                           onclick="divVisibility('Random');"><span>Random</span>
+                    <input class="category__input js-category__input" id="randomItem" type="radio" name="Category"
+                           value="Random">
+                    <span>Random</span>
                 </label>
-                <div class="category__item--inner">
-                    <div id="Random"></div>
-                </div>
             </div>
             <div class="category__item">
-                <label for="categoryItem">
-                    <input id="categoryItem" type="radio" name="Category" value="Categories"
-                           onclick="divVisibility('Categories');"><span>Categories</span>
+                <label class="category__input js-category__input" for="categoryItem">
+                    <input id="categoryItem" type="radio" name="Category"
+                           value="Categories">
+                    <span>Categories</span>
                 </label>
                 <div class="category__item--inner">
                     <div id="Categories">
@@ -56,9 +56,9 @@
             </div>
             <div class="category__item">
                 <label for="searchItem">
-                    <input id="searchItem" type="radio" name="Category" value="Search"
-                           onclick="divVisibility('Search');"
-                    ><span>Search</span>
+                    <input class="category__input js-category__input" id="searchItem" type="radio" name="Category"
+                           value="Search">
+                    <span>Search</span>
                 </label>
                 <div class="category__item--inner">
                     <form>
@@ -74,17 +74,15 @@
             <button class="category__item--button" type="button" onclick="displayRadioValue()">
                 Chuck it up
             </button>
-            <div id="result"></div>
-            <div class="user-list">
-            </div>
         </div>
         <div class="container">
             <div id="joke">
             </div>
         </div>
+    </div>
 
-    </section>
-    <section class="wrapper">
+
+    <aside class="favourite">
         <div class="favourite__item">
             <input type="checkbox" id="favourite"/>
             <label for="favourite" class="favourite">
@@ -105,7 +103,7 @@
 
             </div>
         </div>
-    </section>
+    </aside>
 </main>
 </body>
 </html>
