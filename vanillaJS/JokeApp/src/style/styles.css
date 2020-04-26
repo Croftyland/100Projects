@@ -67,9 +67,13 @@ body {
     margin-top: 10px;
 }
 
-#Search, #Categories, #Random{
+.category__item--inner {
     display: none;
 }
+
+
+.visible { display: inline}
+
 
 [type="radio"] {
     border: 0;
@@ -409,3 +413,4 @@ body {
 /*    line-height: 1;*/
 /*    vertical-align: -0.125em;*/
 /*}*/
+

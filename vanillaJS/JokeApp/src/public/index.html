@@ -22,21 +22,23 @@
                 Let's find a joke for you
             </div>
         </div>
+        <form id="category">
         <div class="category js-category">
             <div class="category__item">
-                <label for="randomItem">
-                    <input class="category__input js-category__input" id="randomItem" type="radio" name="Category"
-                           value="Random">
+                <label for="randomItem"  class="category__input js-category__input">
+                    <input  id="randomItem" type="radio" name="Category"
+                           value="random">
                     <span>Random</span>
                 </label>
+                <div data-value="random"></div>
             </div>
             <div class="category__item">
-                <label class="category__input js-category__input" for="categoryItem">
+                <label for="categoryItem" class="category__input js-category__input">
                     <input id="categoryItem" type="radio" name="Category"
-                           value="Categories">
+                           value="categories">
                     <span>Categories</span>
                 </label>
-                <div class="category__item--inner">
+                <div class="category__item--inner" data-value="categories">
                     <div id="Categories">
                         <div class="tag">
                             <input id=animal name="Type" value="animal" type=radio><label for=animal>Animal</label>
@@ -55,12 +57,12 @@
                 </div>
             </div>
             <div class="category__item">
-                <label for="searchItem">
-                    <input class="category__input js-category__input" id="searchItem" type="radio" name="Category"
-                           value="Search">
+                <label for="searchItem" class="category__input js-category__input" >
+                    <input id="searchItem" type="radio" name="Category"
+                           value="search">
                     <span>Search</span>
                 </label>
-                <div class="category__item--inner">
+                <div class="category__item--inner" data-value="search">
                     <form>
                         <div id="Search">
                             <input type="text" placeholder="Free quote search..." value="" name="Type" class="input"
@@ -75,6 +77,7 @@
                 Chuck it up
             </button>
         </div>
+        </form>
         <div class="container">
             <div id="joke">
             </div>

@@ -1,61 +1,36 @@
 import '../style/styles.css';
-import request from './utilities/random.js';
+import request from './utilities/request';
+
 
 import chuck from '../img/chuck.png';
 
 document.getElementById('chuck').src = chuck;
 
-var divs = ["Random", "Categories", "Search"];
-var visibleDivId = null;
 
-export function divVisibility(divId) {
-	if (visibleDivId === divId) {
-		visibleDivId = null;
-	} else {
-		visibleDivId = divId;
-	}
-	hideNonVisibleDivs();
-}
+let displayRadioValue = (function (target) {
 
-function hideNonVisibleDivs({target}) {
-	console.log('target:', target);
-	if (target.closest('.js-category__input')) {
-		if ( target.value === 'Search') {
-			   console.log('clicked')
+	let init = function() {
+		target.onclick = function(e) {
+			if (e.target.type == "radio") {
+				let matchingInput = target.querySelector('[data-value="'+ e.target.value +'"]');
+				switchToInput(matchingInput);
 
-				} else {
+			}
+		};
+	};
 
-				}
-	}
-
-	// var i, divId, div;
-	// for (i = 0; i < divs.length; i++) {
-	// 	divId = divs[i];
-	// 	div = document.getElementById(divId);
-	// 	if (visibleDivId === divId) {
-	// 		div.style.display = "block";
-	// 	} else {
-	// 		div.style.display = "none";
-	// 	}
-	// }
-}
-
-// function displayRadioValue() {
-// 	document.getElementById("result").innerHTML = "";
-// 	var ele = document.getElementsByTagName('input');
-//
-// 	for (let i = 0; i < ele.length; i++) {
-//
-// 		if (ele[i].type === "radio") {
-//
-// 			if (ele[i].checked)
-// 				document.getElementById("result").innerHTML
-// 					+= ele[i].name + " Value: "
-// 					+ ele[i].value + "<br>";
-// 		}
-// 	}
-// }
+	let switchToInput = function(input) {
+		let classInputs = target.querySelectorAll('.category__item--inner');
+		[].forEach.call(classInputs, function(input) {
+			input.classList.remove("visible");
+		});
+			input.classList.add("visible");
+	};
 
 
-document.querySelector('.js-category').addEventListener('click', hideNonVisibleDivs);
+	return {
+		init: init
+	};
+})(document.getElementById("category"));
 
+displayRadioValue.init();
