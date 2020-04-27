@@ -8,7 +8,7 @@ export const request = (fetchPromise) =>
     .then(data => createJoke(data));
 
 
-export const createJoke = (data) => {
+ const createJoke = (data) => {
     let fragment = document.createDocumentFragment();
     let joke = document.createElement('div');
     joke.classList.add('container');
@@ -47,10 +47,10 @@ export const createJoke = (data) => {
                 </div>   
             </div>
        </div>`;
-    render(template, document.querySelector('#joke'));
     fragment.appendChild(joke);
     jokeCard.appendChild(fragment);
+   render(template, document.querySelector('#joke'));
 }
 
 
-
+export { createJoke }

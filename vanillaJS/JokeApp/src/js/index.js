@@ -1,26 +1,28 @@
 import '../style/styles.css';
 import { request } from './utilities/request';
-import { searchRequest } from './utilities/search';
+import { controlSearch } from './utilities/search';
 
 import chuck from '../img/chuck.png';
 
 
-const fetchPromise = 'https://api.chucknorris.io/jokes/random';
+const fetchRandom = 'https://api.chucknorris.io/jokes/random';
+const fetchCategory = fetchRandom.split('random').join('random?category=dev');
+
 document.getElementById('chuck').src = chuck;
 
 let displayRadioValue = (function(target) {
   let init = function() {
     target.onclick = function(e) {
       if (e.target.type == 'radio') {
-        let matchingInput = target.querySelector('[data-value="' + e.target.value + '"]');
+        let matchingInput = target.querySelector('[data-value=' + e.target.value + ']');
         switchToInput(matchingInput);
         if (e.target.value === 'random') {
-          request(fetchPromise);
+          request(fetchRandom);
         }
         if (e.target.value === 'categories') {
-          console.log('categories');
+          request(fetchCategory);
         }
-        else searchRequest()
+        // else controlSearch();
       }
     };
   };
