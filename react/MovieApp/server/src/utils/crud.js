@@ -131,5 +131,6 @@ export const crudControllers = model => ({
   getById: getById(model),
   getAll: getAll(model),
   sortAll: sortAll(model),
-  searchByTitle: searchByTitle(model)
+  searchByTitle: searchByTitle(model),
+  uploadFile
 })

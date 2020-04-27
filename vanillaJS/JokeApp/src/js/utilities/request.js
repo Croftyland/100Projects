@@ -7,7 +7,8 @@ export const request = (fetchPromise) =>
     })
     .then(data => createJoke(data));
 
-  function createJoke(data) {
+
+export const createJoke = (data) => {
     let fragment = document.createDocumentFragment();
     let joke = document.createElement('div');
     joke.classList.add('container');
