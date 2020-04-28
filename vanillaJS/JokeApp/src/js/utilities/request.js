@@ -1,35 +1,34 @@
 const jokeCard = document.querySelector('.container');
 
-export const request = (fetchPromise) =>
+const request = (fetchPromise) =>
   fetch(fetchPromise)
     .then(response => {
       return response.json();
     })
     .then(data => createJoke(data));
 
+const createJoke = (data) => {
+  let fragment = document.createDocumentFragment();
+  let joke = document.createElement('div');
+  joke.classList.add('container');
 
- const createJoke = (data) => {
-    let fragment = document.createDocumentFragment();
-    let joke = document.createElement('div');
-    joke.classList.add('container');
+  let render = function (template, node) {
+    node.innerHTML += template;
+  };
 
-    let render = function (template, node) {
-      node.innerHTML = template;
-    };
+  const calculate = function() {
+    let previously = new Date(data.updated_at);
+    let now = Date.now();
+    let msPerMinute = 60 * 1000;
+    let msPerHour = msPerMinute * 60;
 
-    const calculate = function() {
-      let previously = new Date(data.updated_at);
-      let now = Date.now();
-      let msPerMinute = 60 * 1000;
-      let msPerHour = msPerMinute * 60;
+    let elapsed = now - previously;
 
-      let elapsed = now - previously;
+    return Math.round(elapsed / msPerHour) + ' hours ago';
+  };
 
-      return Math.round(elapsed / msPerHour) + ' hours ago';
-    };
-
-    // language=HTML
-    let template = `
+  // language=HTML
+  let template = `
        <div class="card">
             <div class ="card__header">
                 <button class="card__headerBtn"></button>
@@ -47,10 +46,9 @@ export const request = (fetchPromise) =>
                 </div>   
             </div>
        </div>`;
-    fragment.appendChild(joke);
-    jokeCard.appendChild(fragment);
-   render(template, document.querySelector('#joke'));
-}
+  fragment.appendChild(joke);
+  jokeCard.appendChild(fragment);
+  render(template, document.querySelector('#joke'));
+};
 
-
-export { createJoke }
+export { request, createJoke };

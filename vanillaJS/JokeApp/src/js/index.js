@@ -5,9 +5,7 @@ import { controlCategory } from './utilities/caregory';
 
 import chuck from '../img/chuck.png';
 
-
 const fetchRandom = 'https://api.chucknorris.io/jokes/random';
-
 
 document.getElementById('chuck').src = chuck;
 
@@ -23,7 +21,6 @@ let displayRadioValue = (function(target) {
         if (e.target.value === 'categories') {
           controlCategory();
         }
-        // else controlSearch();
       }
     };
   };
