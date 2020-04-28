@@ -15,6 +15,7 @@
 
 </header>
 <main>
+
     <div class="wrapper">
         <div class="intro">
             <div class="intro__title">
@@ -23,58 +24,49 @@
             </div>
         </div>
         <form id="category">
-        <div class="category js-category">
-            <div class="category__item">
-                <label for="randomItem"  class="category__input js-category__input">
-                    <input  id="randomItem" type="radio" name="Category"
-                           value="random">
-                    <span>Random</span>
-                </label>
-                <div data-value="random"></div>
-            </div>
-            <div class="category__item">
-                <label for="categoryItem" class="category__input js-category__input">
-                    <input id="categoryItem" type="radio" name="Category"
-                           value="categories">
-                    <span>Categories</span>
-                </label>
-                <div class="category__item--inner" data-value="categories">
-                    <div id="Categories">
-                        <div class="tag">
-                            <input id=animal name="Type" value="animal" type=radio><label for=animal>Animal</label>
-                        </div>
-                        <div class="tag">
-                            <input id=career name="Type" value="career" type=radio><label for=career>Career</label>
-                        </div>
-                        <div class="tag">
-                            <input id=celebrity name="Type" value="celebrity" type=radio><label
-                                for=celebrity>Celebrity</label>
-                        </div>
-                        <div class="tag">
-                            <input id=dev name="Type" value="dev" type=radio><label for=dev>Dev</label>
+            <div class="category js-category">
+                <div class="category__item">
+                    <label for="randomItem" class="category__input js-category__input">
+                        <input id="randomItem" type="radio" name="Category"
+                               value="random">
+                        <span>Random</span>
+                    </label>
+                    <div data-value="random"></div>
+                </div>
+                <div class="category__item">
+                    <label for="categoryItem" class="category__input js-category__input">
+                        <input id="categoryItem" type="radio" name="Category"
+                               value="categories">
+                        <span>Categories</span>
+                    </label>
+                    <div class="category__item--inner" data-value="categories">
+                        <div id="Categories">
+                            <input class="tag" id=animal name="Type" value="animal" type="button">
+                            <input class="tag" id=career name="Type" value="career" type="button">
+                            <input class="tag" id=celebrity name="Type" value="celebrity" type="button">
+                            <input class="tag" id=dev name="Type" value="dev" type="button">
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="category__item">
-                <label for="searchItem" class="category__input js-category__input" >
-                    <input id="searchItem" type="radio" name="Category"
-                           value="search">
-                    <span>Search</span>
-                </label>
-                <div class="category__item--inner" data-value="search">
-                    <form>
-                        <div id="Search">
-                            <input type="text" placeholder="Free quote search..." value="" name="Type" class="input"
-                                   id="OWN"
-                                   required="required" pattern="[a-zA-Z ]+">
+                <div class="category__item">
+                    <label for="searchItem" class="category__input js-category__input">
+                        <input id="searchItem" type="radio" name="Category"
+                               value="search">
+                        <span>Search</span>
+                    </label>
+                    <div class="category__item--inner" data-value="search">
+                        <form>
+                            <div id="Search">
+                                <input type="text" placeholder="Free quote search..." value="" name="Type" class="input"
+                                       id="OWN"
+                                       required="required" pattern="[a-zA-Z ]+">
 
-                        </div>
-                    </form>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </form>
         <button class="category__item--button" type="button">
             Chuck it up
@@ -85,29 +77,26 @@
         </div>
     </div>
 
+    <div class="favourite__item">
+        <input type="checkbox" id="favourite"/>
+        <label for="favourite" class="favourite">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
 
-    <aside class="favourite">
-        <div class="favourite__item">
-            <input type="checkbox" id="favourite"/>
-            <label for="favourite" class="favourite">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+        <div class="favourite__nav">
+            <nav>
+                <div class="favourite__nav--header">
+                    Favourite
+                </div>
+                <div class="favourite__nav--image">
+                    <img id="chuck" alt="Chuck"/>
+                </div>
+            </nav>
 
-            <div class="favourite__nav">
-                <nav>
-                    <div class="favourite__nav--header">
-                        Favourite
-                    </div>
-                    <div class="favourite__nav--image">
-                        <img id="chuck" alt="Chuck"/>
-                    </div>
-                </nav>
-
-            </div>
         </div>
-    </aside>
+    </div>
 </main>
 </body>
 </html>

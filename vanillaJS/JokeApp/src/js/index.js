@@ -1,12 +1,13 @@
 import '../style/styles.css';
 import { request } from './utilities/request';
 import { controlSearch } from './utilities/search';
+import { controlCategory } from './utilities/caregory';
 
 import chuck from '../img/chuck.png';
 
 
 const fetchRandom = 'https://api.chucknorris.io/jokes/random';
-const fetchCategory = fetchRandom.split('random').join('random?category=dev');
+
 
 document.getElementById('chuck').src = chuck;
 
@@ -20,7 +21,7 @@ let displayRadioValue = (function(target) {
           request(fetchRandom);
         }
         if (e.target.value === 'categories') {
-          request(fetchCategory);
+          controlCategory();
         }
         // else controlSearch();
       }
