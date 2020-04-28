@@ -33,7 +33,7 @@ body {
 
 /* ----- HEADER ----- */
 
-.title__row-header {
+.mainHeader__title {
     font-weight: bold;
     font-size: 20px;
     line-height: 28px;
@@ -46,7 +46,7 @@ body {
     font-size: 24px;
 }
 
-.intro__exclamation  {
+.intro__exclamation {
     font-weight: bold;
     font-size: 32px;
 }
@@ -54,12 +54,12 @@ body {
 
 /* ----- CATEGORY ----- */
 
-.category__container{
+.category__container {
     margin-top: 45px;
     margin-bottom: 35px;
 }
 
-.category__item{
+.category__item {
     margin-bottom: 10px;
 }
 
@@ -72,7 +72,9 @@ body {
 }
 
 
-.visible { display: inline}
+.visible {
+    display: inline
+}
 
 
 [type="radio"] {
@@ -103,9 +105,14 @@ body {
     transition: 0.5s ease all;
 }
 
- [type="radio"]:checked + span:before {
+[type="radio"]:checked + span:before {
     background: #333;
     box-shadow: 0 0 0 0.15em #333;
+}
+
+#Categories {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .tag {
@@ -138,6 +145,8 @@ body {
 }
 
 .input {
+    margin-top: 20px;
+    margin-bottom: 20px;
     min-width: 70%;
     height: 42px;
     border: 2px solid #333333;
@@ -155,7 +164,7 @@ body {
     line-height: 22px;
     width: 152px;
     height: 42px;
-
+    margin-bottom: 20px;
     background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
     border-radius: 10px;
 }
@@ -165,7 +174,7 @@ body {
 .card {
     background-color: #f8f8f8;
     padding: 40px;
-    width: 100%;
+    width: 70%;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     border-radius: 20px;
@@ -175,6 +184,7 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    margin-top: 20px;
 
 }
 
@@ -185,7 +195,7 @@ body {
 }
 
 .card__body {
-    position:relative;
+    position: relative;
     padding-left: 60px;
 
 }
@@ -222,8 +232,9 @@ body {
     color: #ABABAB;
     font-size: 10px;
 }
+
 .info__link {
-    color:#8EA7FF;
+    color: #8EA7FF;
     font-size: 10px;
     text-decoration: underline #8EA7FF;
 }
@@ -237,7 +248,6 @@ body {
     height: 10px;
     margin-left: 5px;
 }
-
 
 
 /* TODO
@@ -263,7 +273,7 @@ body {
     color: #ABABAB;
 }
 
-.dialog{
+.dialog {
     display: block;
     box-sizing: border-box;
     height: 20px;
@@ -279,8 +289,6 @@ body {
     background-image: url("../img/fill-heart.svg");
     background-repeat: no-repeat;
 }
-
-
 
 
 /* ----- FAVOURITE ----- */
@@ -330,6 +338,10 @@ body {
     background-color: #333333;
     transform: rotate(360deg);
     transition: transform 250ms ease;
+}
+
+#favourite:checked ~ body {
+    background: rgba(0, 0, 0, 0.3);
 }
 
 #favourite:checked ~ .favourite span {
@@ -388,7 +400,6 @@ body {
 }
 
 
-
 @media screen and (min-width: 1024px) {
     .favourite span {
         display: none;
@@ -404,13 +415,9 @@ body {
     }
 
 }
-
-
-
-/*[type="radio"]:focus + span:after {*/
-/*    content: '\0020\2190';*/
-/*    font-size: 1.5em;*/
-/*    line-height: 1;*/
-/*    vertical-align: -0.125em;*/
-/*}*/
+@media screen and (max-width: 1024px) {
+    .card, .input {
+        width: 100%;
+    }
+}
 
