@@ -1,8 +1,6 @@
 import axios from 'axios';
+import { obj, createJoke } from './request'
 
-import { createJoke } from './request';
-
-const state = {};
 const elements = {
   searchRequest : document.querySelector('.input'),
   searchList : document.getElementById('joke')
@@ -26,9 +24,9 @@ class searchRequest {
 const controlSearch = async () => {
   const query = getInput();
   if (query) {
-    state.search = new searchRequest(query);
-    await state.search.getRequest();
-    (state.search.result).forEach(data => {
+    obj.search = new searchRequest(query);
+    await obj.search.getRequest();
+    (obj.search.result).forEach(data => {
       createJoke(data);
     });
 

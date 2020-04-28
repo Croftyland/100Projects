@@ -1,23 +1,28 @@
 const jokeCard = document.querySelector('.container');
 
+let obj = {};
+
 const request = (fetchPromise) =>
   fetch(fetchPromise)
     .then(response => {
       return response.json();
     })
-    .then(data => createJoke(data));
+    .then(data => obj = data)
+    .then(() => createJoke(obj));
 
-const createJoke = (data) => {
+
+
+const createJoke = (obj) => {
   let fragment = document.createDocumentFragment();
   let joke = document.createElement('div');
   joke.classList.add('container');
 
-  let render = function (template, node) {
+  let render = function(template, node) {
     node.innerHTML += template;
   };
 
   const calculate = function() {
-    let previously = new Date(data.updated_at);
+    let previously = new Date(obj.updated_at);
     let now = Date.now();
     let msPerMinute = 60 * 1000;
     let msPerHour = msPerMinute * 60;
@@ -36,13 +41,13 @@ const createJoke = (data) => {
             <div class="card__body">
                 <div class="info">
                     <div class="info__id">
-                       ID: <a href="${data.url}" class="info__link">${data.id}</a>
-                        <div class="info__text">${data.value}</div>
+                       ID: <a href="${obj.url}" class="info__link">${obj.id}</a>
+                        <div class="info__text">${obj.value}</div>
                     </div>
                 </div>
                     <div class="card__footer">
                         <div class="update">Last update <time>${calculate()}</time></div>
-                    <div class="tag tag--min">${data.categories}</div>
+                    <div class="tag tag--min">${obj.categories}</div>
                 </div>   
             </div>
        </div>`;
@@ -51,4 +56,4 @@ const createJoke = (data) => {
   render(template, document.querySelector('#joke'));
 };
 
-export { request, createJoke };
+export { request, createJoke, obj };
