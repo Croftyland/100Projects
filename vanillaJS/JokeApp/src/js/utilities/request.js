@@ -1,6 +1,14 @@
+import { Likes } from './likes';
+
 const jokeCard = document.querySelector('#joke');
 
-let obj = [];
+let obj=[];
+
+document.querySelector('.container').addEventListener('click', event => {
+  if (event.target.matches('.card__header, .card__headerBtn')) {
+    controlFavourite(obj);
+  }
+})
 
 async function request(url) {
   try {
@@ -23,7 +31,6 @@ const renderReq = async (url) => {
 };
 
 function giveAsign(data) {
-  console.log(data);
   obj = data.map(quote => ({
       categories: quote.categories,
       id: quote.id,
@@ -34,6 +41,27 @@ function giveAsign(data) {
   );
   renderQuotes(obj, jokeCard);
 }
+
+const  controlFavourite = (data) => {
+  const card = data.map((quote) => {
+    if (!quote.likes) quote.likes = new Likes();
+    const currentID = quote.id;
+    if (!quote.likes.checkLike(currentID)) {
+      const newLike = quote.likes.addLike(
+        currentID,
+        quote.updated_at,
+        quote.url,
+        quote.categories,
+        quote.value
+      );
+      console.log(quote.likes)
+    } else {
+      quote.likes.deleteLike(currentID);
+    }
+    console.log(quote.likes)
+  })
+};
+
 
 const renderQuotes = (data, parent) => {
   const cardQuote = data.map((quote) => {

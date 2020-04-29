@@ -10,11 +10,6 @@ const fetchRandom = 'https://api.chucknorris.io/jokes/random';
 let getQuote = obj;
 
 
-document.querySelector('.container').addEventListener('click', event => {
-  if (event.target.matches('.card__header, .card__headerBtn')) {
-    controlFavourite();
-  }
-})
 
 document.getElementById('chuck').src = chuck;
 
