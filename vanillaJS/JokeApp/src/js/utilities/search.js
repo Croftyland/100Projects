@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { obj, createJoke } from './request'
+import { giveAsign, obj } from './request';
 
 const elements = {
   searchRequest : document.querySelector('.input'),
@@ -26,10 +26,7 @@ const controlSearch = async () => {
   if (query) {
     obj.search = new searchRequest(query);
     await obj.search.getRequest();
-    (obj.search.result).forEach(data => {
-      createJoke(data);
-    });
-
+      giveAsign(obj.search.result);
   }
 };
 

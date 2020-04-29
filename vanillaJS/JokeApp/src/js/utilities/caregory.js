@@ -1,4 +1,4 @@
-import { request } from './request';
+import { renderReq } from './request';
 
 const controlCategory = () => {
   let clickedValue;
@@ -13,7 +13,7 @@ const controlCategory = () => {
 
 const value = (cat) => {
   const url = `https://api.chucknorris.io/jokes/random?category=${cat}`;
-  request(url);
+  renderReq(url);
 };
 
 export { controlCategory }

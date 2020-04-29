@@ -1,59 +1,71 @@
-const jokeCard = document.querySelector('.container');
+const jokeCard = document.querySelector('#joke');
 
-let obj = {};
+let obj = [];
 
-const request = (fetchPromise) =>
-  fetch(fetchPromise)
-    .then(response => {
-      return response.json();
+async function request(url) {
+  try {
+    const response = await fetch(url, {
+      mode: 'cors',
+      method: 'GET',
+      credentials: 'same-origin'
+    });
+    const quotes = await response.json();
+    return quotes;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const renderReq = async (url) => {
+  const quotes = await request(url);
+  obj = [quotes];
+  giveAsign(obj);
+};
+
+function giveAsign(data) {
+  console.log(data);
+  obj = data.map(quote => ({
+      categories: quote.categories,
+      id: quote.id,
+      updated_at: quote.updated_at,
+      url: quote.url,
+      value: quote.value
     })
-    .then(data => obj = data)
-    .then(() => createJoke(obj));
+  );
+  renderQuotes(obj, jokeCard);
+}
 
+const renderQuotes = (data, parent) => {
+  const cardQuote = data.map((quote) => {
+    const calculate = function() {
+      let previously = new Date(quote.updated_at);
+      let now = Date.now();
+      let msPerMinute = 60 * 1000;
+      let msPerHour = msPerMinute * 60;
 
+      let elapsed = now - previously;
 
-const createJoke = (obj) => {
-  let fragment = document.createDocumentFragment();
-  let joke = document.createElement('div');
-  joke.classList.add('container');
-
-  let render = function(template, node) {
-    node.innerHTML += template;
-  };
-
-  const calculate = function() {
-    let previously = new Date(obj.updated_at);
-    let now = Date.now();
-    let msPerMinute = 60 * 1000;
-    let msPerHour = msPerMinute * 60;
-
-    let elapsed = now - previously;
-
-    return Math.round(elapsed / msPerHour) + ' hours ago';
-  };
-
-  // language=HTML
-  let template = `
-       <div class="card">
+      return Math.round(elapsed / msPerHour) + ' hours ago';
+    };
+    return `<div class="card">
             <div class ="card__header">
                 <button class="card__headerBtn"></button>
             </div>
             <div class="card__body">
                 <div class="info">
                     <div class="info__id">
-                       ID: <a href="${obj.url}" class="info__link">${obj.id}</a>
-                        <div class="info__text">${obj.value}</div>
+                       ID: <a href="${quote.url}" class="info__link">${quote.id}</a>
+                        <div class="info__text">${quote.value}</div>
                     </div>
                 </div>
                     <div class="card__footer">
                         <div class="update">Last update <time>${calculate()}</time></div>
-                    <div class="tag tag--min">${obj.categories}</div>
+                    <div class="tag tag--min">${quote.categories}</div>
                 </div>   
             </div>
-       </div>`;
-  fragment.appendChild(joke);
-  jokeCard.appendChild(fragment);
-  render(template, document.querySelector('#joke'));
+       </div>`;;
+  }).join(' ');
+  parent.innerHTML = cardQuote;
 };
 
-export { request, createJoke, obj };
+export { renderReq, obj, renderQuotes, jokeCard, giveAsign };

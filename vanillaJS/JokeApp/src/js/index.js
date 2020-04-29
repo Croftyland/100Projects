@@ -1,11 +1,20 @@
 import '../style/styles.css';
-import { request } from './utilities/request';
+import { renderReq, obj, giveAsign, jokeCard } from './utilities/request';
 import { controlSearch } from './utilities/search';
 import { controlCategory } from './utilities/caregory';
+import { controlFavourite } from './utilities/likes';
 
 import chuck from '../img/chuck.png';
 
 const fetchRandom = 'https://api.chucknorris.io/jokes/random';
+let getQuote = obj;
+
+
+document.querySelector('.container').addEventListener('click', event => {
+  if (event.target.matches('.card__header, .card__headerBtn')) {
+    controlFavourite();
+  }
+})
 
 document.getElementById('chuck').src = chuck;
 
@@ -16,12 +25,15 @@ let displayRadioValue = (function(target) {
         let matchingInput = target.querySelector('[data-value=' + e.target.value + ']');
         switchToInput(matchingInput);
         if (e.target.value === 'random') {
-          request(fetchRandom);
+          getQuote = renderReq(fetchRandom);
         }
         if (e.target.value === 'categories') {
           controlCategory();
         }
+        else(controlSearch())
+
       }
+      giveAsign(getQuote, jokeCard);
     };
   };
 
