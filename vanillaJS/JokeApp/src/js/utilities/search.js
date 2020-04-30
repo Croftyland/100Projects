@@ -32,8 +32,13 @@ const controlSearch = async () => {
 
 const getInput = () => elements.searchRequest.value;
 
-document.querySelector('.category__item--button').addEventListener('click', event => {
+document.querySelector('#category').addEventListener('submit', event => {
   event.preventDefault();
+  if(event.keyCode === 13) {
+    event.preventDefault();
+    controlSearch.reset();
+    return false;
+  }
   controlSearch();
 });
 
