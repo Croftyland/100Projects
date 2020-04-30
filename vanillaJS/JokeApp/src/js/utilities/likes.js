@@ -1,25 +1,14 @@
-class Likes {
-  constructor() {
-    this.likes = [];
+import { obj } from './request';
+
+document.querySelector('.container').addEventListener('click', event => {
+  if (event.target.matches('.card__header, .card__headerBtn')) {
+    controlFavourite(event.target.dataset.id, obj);
   }
+})
 
-  addLike(id, value, categories, update, url) {
-    const like = { id, value, categories, update, url };
-    this.likes.push(like);
-    state.push(like);
-    return like;
-  }
+const controlFavourite = (quoteId, obj) => {
+  const currQuote = obj.find((quote) => quote.id === quoteId)
+  currQuote.isLiked = !currQuote.isLiked;
+  console.log(currQuote)
 
-  deleteLike(id) {
-    const index = this.likes.findIndex(el => el.id === id);
-    this.likes.splice(index, 1);
-
-  }
-
-   checkLike(id) {
-    return this.likes.findIndex(el => el.id === id) !== -1;
-  }
-
-}
-
-export { Likes };
+};
