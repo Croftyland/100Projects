@@ -1,3 +1,5 @@
+import { controlFavourite } from './likes';
+
 const jokeCard = document.querySelector('#joke');
 
 let obj=[];
@@ -64,9 +66,18 @@ const renderQuotes = (data, parent) => {
                     <div class="tag tag--min">${quote.categories}</div>
                 </div>   
             </div>
-       </div>`;;
+       </div>`;
   }).join(' ');
   parent.innerHTML = cardQuote;
+  document.querySelectorAll('.card').forEach(el => el.addEventListener('click', event => {
+      if (event.target.matches('.card__headerBtn')) {
+       event.target.classList.toggle("card__headerBtn--favourite");
+       localStorage.setItem('dataName', event.target.dataset.id);
+
+       controlFavourite(event.target.dataset.id, obj);
+      }
+    })
+  );
 };
 
 export { renderReq, obj, renderQuotes, jokeCard, giveAsign };

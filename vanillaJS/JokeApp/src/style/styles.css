@@ -282,14 +282,6 @@ body {
 
 }
 
-.copy {
-    display: block;
-    box-sizing: border-box;
-    height: 20px;
-    background-image: url("../img/fill-heart.svg");
-    background-repeat: no-repeat;
-}
-
 
 /* ----- FAVOURITE ----- */
 
