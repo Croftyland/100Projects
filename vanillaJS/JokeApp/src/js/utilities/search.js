@@ -3,7 +3,6 @@ import { giveAsign, obj } from './request';
 
 const elements = {
   searchRequest : document.querySelector('.input'),
-  searchList : document.getElementById('joke')
 };
 
 class searchRequest {
@@ -34,11 +33,6 @@ const getInput = () => elements.searchRequest.value;
 
 document.querySelector('#category').addEventListener('submit', event => {
   event.preventDefault();
-  if(event.keyCode === 13) {
-    event.preventDefault();
-    controlSearch.reset();
-    return false;
-  }
   controlSearch();
 });
 

@@ -71,7 +71,8 @@ const renderQuotes = (data, parent) => {
   parent.innerHTML = cardQuote;
   document.querySelectorAll('.card').forEach(el => el.addEventListener('click', event => {
       if (event.target.matches('.card__headerBtn')) {
-       event.target.classList.toggle("card__headerBtn--favourite");
+        console.log('click');
+        event.target.classList.toggle("card__headerBtn--favourite");
        localStorage.setItem('dataName', event.target.dataset.id);
 
        controlFavourite(event.target.dataset.id, obj);
