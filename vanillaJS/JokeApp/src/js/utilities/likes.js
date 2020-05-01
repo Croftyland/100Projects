@@ -23,6 +23,16 @@ const controlFavourite = (quoteId, obj) => {
 
 const renderLike = fav => {
   localStorage.setItem('dataFav', JSON.stringify(items));
+  const calculate = function() {
+    let previously = new Date(fav.updated_at);
+    let now = Date.now();
+    let msPerMinute = 60 * 1000;
+    let msPerHour = msPerMinute * 60;
+
+    let elapsed = now - previously;
+
+    return Math.round(elapsed / msPerHour) + ' hours ago';
+  };
   const markup = `
            <li class ="card_fav">
                <div data-id=${fav.id} class="card">
@@ -37,6 +47,7 @@ const renderLike = fav => {
                     </div>
                     </div>
                         <div class="card__footer">
+                            <div class="update">Last update <time>${calculate()}</time></div>
                             <div class="tag tag--min">${fav.categories}</div>
                         </div>   
                     </div>
