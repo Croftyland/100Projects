@@ -1,4 +1,6 @@
-html {
+html, body
+{
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -51,7 +53,6 @@ body {
     font-size: 32px;
 }
 
-
 /* ----- CATEGORY ----- */
 
 .category__container {
@@ -71,11 +72,9 @@ body {
     display: none;
 }
 
-
 .visible {
     display: inline
 }
-
 
 [type="radio"] {
     border: 0;
@@ -145,9 +144,10 @@ body {
 }
 
 .input {
+    display: list-item;
     margin-top: 20px;
     margin-bottom: 20px;
-    min-width: 70%;
+    min-width: 55%;
     height: 42px;
     border: 2px solid #333333;
     color: #333;
@@ -174,7 +174,7 @@ body {
 .card {
     background-color: #f8f8f8;
     padding: 40px;
-    width: 70%;
+    width: 55%;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     border-radius: 20px;
@@ -185,9 +185,8 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin-top: 20px;
-
+    margin-bottom: 20px;
 }
-
 
 .card__header {
     display: flex;
@@ -197,7 +196,6 @@ body {
 .card__body {
     position: relative;
     padding-left: 60px;
-
 }
 
 .card__body::after {
@@ -239,7 +237,6 @@ body {
     text-decoration: underline #8EA7FF;
 }
 
-
 .info__link::after {
     content: '';
     display: inline-block;
@@ -248,10 +245,6 @@ body {
     height: 10px;
     margin-left: 5px;
 }
-
-
-/* TODO
-   hover // active   */
 
 .info__text {
     color: black;
@@ -282,6 +275,35 @@ body {
 
 }
 
+/* ----- MINI CARDS ----- */
+
+.favourite__list {
+    list-style-type: none;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 350px;
+    padding-right: 40px;
+}
+
+.card__mini {
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    height: 180px;
+}
+
+.info__text--mini, .info__id--mini {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.update--mini {
+    font-size: 10px;
+}
+
+.card__body--mini::after {
+    background: #F8F8F8 url("../img/dialog.svg") no-repeat center;
+}
 
 /* ----- FAVOURITE ----- */
 
@@ -366,8 +388,8 @@ body {
 .favourite__nav {
     position: fixed;
     top: 0;
-    right: -300px;
-    width: 300px;
+    right: -480px;
+    width: 480px;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -385,12 +407,19 @@ body {
 }
 
 .favourite__nav--image img {
-    position: absolute;
-    right: -105px;
-    bottom: -135px;
-
+    bottom: 15px;
+    left: 35%;
+    display: table;
+    position: relative;
+    margin: auto;
+    width: 300px;
 }
 
+@media screen and (max-width: 1024px) {
+    .card, .input {
+        width: 100%;
+    }
+}
 
 @media screen and (min-width: 1024px) {
     .favourite span {
@@ -407,9 +436,14 @@ body {
     }
 
 }
-@media screen and (max-width: 1024px) {
-    .card, .input {
-        width: 100%;
+
+@media screen and (max-width: 400px) {
+    .favourite__nav {
+        right: -380px;
+        width: 380px;
     }
 }
 
+div:empty {
+    display: none;
+}

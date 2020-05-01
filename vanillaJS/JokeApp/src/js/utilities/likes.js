@@ -35,19 +35,19 @@ const renderLike = fav => {
   };
   const markup = `
            <li class ="card_fav">
-               <div data-id=${fav.id} class="card">
+               <div data-id=${fav.id} class="card card__mini">
                     <div class ="card__header">
                         <button data-id=${fav.id} class="card__headerBtn card__headerBtn--favourite"></button>
                     </div>
-                        <div class="card__body">
+                        <div class="card__body card__body--mini">
                             <div class="info">
-                                <div class="info__id">
+                                <div class="info__id info__id--mini">
                                     ID: <a href="${fav.url}" class="info__link">${fav.id}</a>
-                            <div class="info__text">${fav.value}</div>
+                            <div class="info__text info__text--mini">${fav.value}</div>
                     </div>
                     </div>
                         <div class="card__footer">
-                            <div class="update">Last update <time>${calculate()}</time></div>
+                            <div class="update update--mini">Last update <time>${calculate()}</time></div>
                             <div class="tag tag--min">${fav.categories}</div>
                         </div>   
                     </div>
