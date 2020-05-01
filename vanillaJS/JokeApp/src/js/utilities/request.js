@@ -43,7 +43,6 @@ function giveAsign(data) {
   renderQuotes(obj, jokeCard);
 }
 
-
 const renderQuotes = (data, parent) => {
   const cardQuote = data.map((quote) => {
     const calculate = function() {
