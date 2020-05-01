@@ -1,7 +1,8 @@
 import { obj } from './request';
 
 const el = {
-  favouriteList: document.querySelector('.favourite__list')
+  favouriteList: document.querySelector('.favourite__list'),
+  favouriteButton: document.querySelector('.card__headerBtn')
 };
 
 let items = localStorage.getItem('dataFav') ? JSON.parse(localStorage.getItem('dataFav')) : [];
@@ -66,21 +67,19 @@ states.forEach(item => {
 });
 
 const deleteLike = id => {
-  console.log(id);
   const el = document.querySelector(`.card[data-id="${id}"]`).parentElement;
+  const but = document.querySelector(` .container .card__headerBtn[data-id="${id}"]`);
+  console.log(but);
   if (el) {
     el.parentElement.removeChild(el);
+    but.classList.remove('card__headerBtn--favourite')
   }
   items.forEach((item, index) => {
     if (item.id === id) {
       items.splice(index, 1);
-      console.log(item.id, index);
       localStorage.setItem('dataFav', JSON.stringify(items));
-      console.log(items);
     }
   });
-
-
 };
 
-export { controlFavourite };
+export { controlFavourite, items };

@@ -4,6 +4,12 @@ const jokeCard = document.querySelector('#joke');
 
 let obj = [];
 
+
+const isFav = (id) => {
+  let favs = localStorage.getItem('dataFav') ? JSON.parse(localStorage.getItem('dataFav')) : [];
+  return favs.some(el => el.id === id)
+}
+
 async function request(url) {
   try {
     const response = await fetch(url, {
@@ -30,7 +36,8 @@ function giveAsign(data) {
       id: quote.id,
       updated_at: quote.updated_at,
       url: quote.url,
-      value: quote.value
+      value: quote.value,
+      isLiked : quote.isliked
     })
   );
   renderQuotes(obj, jokeCard);
@@ -51,7 +58,7 @@ const renderQuotes = (data, parent) => {
     };
     return `<div class="card">
             <div class ="card__header">
-                <button data-id=${quote.id} class="card__headerBtn"></button>
+                <button data-id=${quote.id} class="card__headerBtn ${isFav(quote.id) ? ' card__headerBtn--favourite' : ''}"></button>
             </div>
             <div class="card__body">
                 <div class="info">
