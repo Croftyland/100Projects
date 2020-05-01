@@ -1,7 +1,5 @@
 import '../style/styles.css';
 
-import chuck from '../img/chuck.png';
-
 import { renderReq, obj, giveAsign, jokeCard } from './utilities/request';
 import { controlSearch } from './utilities/search';
 import { valueCat } from './utilities/caregory';
@@ -9,8 +7,6 @@ import { valueCat } from './utilities/caregory';
 let getQuote = obj;
 
 const fetchRandom = 'https://api.chucknorris.io/jokes/random';
-
-document.getElementById('chuck').src = chuck;
 
 let displayRadioValue = (function(target) {
   let init = function() {
