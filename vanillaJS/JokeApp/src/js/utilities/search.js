@@ -13,7 +13,7 @@ class searchRequest {
   async getRequest() {
     try {
       const res = await axios(`https://api.chucknorris.io/jokes/search?query=${this.query}`);
-      this.result = res.data.result;
+      return res.data.result;
     } catch (error) {
       alert(error);
     }
@@ -24,14 +24,14 @@ const controlSearch = async () => {
   const query = getInput();
   if (query) {
     obj.search = new searchRequest(query);
-    await obj.search.getRequest();
-      giveAsign(obj.search.result);
+    let res = await obj.search.getRequest();
+      giveAsign(res);
   }
 };
 
 const getInput = () => elements.searchRequest.value;
 
-document.querySelector('#category').addEventListener('submit', event => {
+document.querySelector('.category__item--button').addEventListener('click', event => {
   event.preventDefault();
   controlSearch();
 });

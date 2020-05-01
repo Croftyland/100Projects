@@ -2,7 +2,7 @@ import { controlFavourite } from './likes';
 
 const jokeCard = document.querySelector('#joke');
 
-let obj=[];
+let obj = [];
 
 async function request(url) {
   try {
@@ -37,7 +37,6 @@ function giveAsign(data) {
 }
 
 
-
 const renderQuotes = (data, parent) => {
   const cardQuote = data.map((quote) => {
     const calculate = function() {
@@ -69,14 +68,9 @@ const renderQuotes = (data, parent) => {
        </div>`;
   }).join(' ');
   parent.innerHTML = cardQuote;
-  document.querySelectorAll('.card').forEach(el => el.addEventListener('click', event => {
-      if (event.target.matches('.card__headerBtn')) {
-        console.log('click');
-        event.target.classList.toggle("card__headerBtn--favourite");
-       localStorage.setItem('dataName', event.target.dataset.id);
-
-       controlFavourite(event.target.dataset.id, obj);
-      }
+  document.querySelectorAll(".container .card__headerBtn").forEach(el => el.addEventListener('click', event => {
+      event.target.classList.toggle('card__headerBtn--favourite');
+      controlFavourite(event.target.dataset.id, obj);
     })
   );
 };
