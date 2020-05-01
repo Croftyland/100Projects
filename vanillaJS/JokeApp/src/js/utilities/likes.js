@@ -69,10 +69,13 @@ states.forEach(item => {
 const deleteLike = id => {
   const el = document.querySelector(`.card[data-id="${id}"]`).parentElement;
   const but = document.querySelector(` .container .card__headerBtn[data-id="${id}"]`);
-  console.log(but);
+  if (but) {
+    but.classList.remove('card__headerBtn--favourite')
+    console.log(but);
+  }
   if (el) {
     el.parentElement.removeChild(el);
-    but.classList.remove('card__headerBtn--favourite')
+
   }
   items.forEach((item, index) => {
     if (item.id === id) {
