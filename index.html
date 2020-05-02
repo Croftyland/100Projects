@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../style/styles.css" rel="stylesheet">
+    <title>Chuck Norris Joke?</title>
+</head>
+
+<body>
+<header class="mainHeader">
+    <div class="mainHeader__title">
+        MSI 2020
+    </div>
+</header>
+<main>
+    <div class="wrapper">
+        <div class="intro">
+            <div class="intro__title">
+                <div class="intro__exclamation">Hey!</div>
+                Let's find a joke for you
+            </div>
+        </div>
+        <div class="category js-category">
+            <div class="category__item">
+                <label for="randomItem" class="category__input js-category__input">
+                    <input id="randomItem" type="radio" name="Category" value="random">
+                    <span>Random</span>
+                </label>
+                <div data-value="random"></div>
+            </div>
+            <div class="category__item">
+                <label for="categoryItem" class="category__input js-category__input">
+                    <input id="categoryItem" type="radio" name="Category" value="categories">
+                    <span>Categories</span>
+                </label>
+                <div class="category__item--inner" data-value="categories">
+                    <form id="categories">
+                        <button class="tag" id="animal" data-value="animal" >animal</button>
+                        <button class="tag" id="career" data-value="career" >career</button>
+                        <button class="tag" id="celebrity" data-value="celebrity" >celebrity</button>
+                        <button class="tag" id="dev" data-value="dev" >dev</button>
+                    </form>
+                </div>
+            </div>
+            <div class="category__item">
+                <label for="searchItem" class="category__input js-category__input">
+                    <input id="searchItem" type="radio" name="Category" value="search">
+                    <span>Search</span>
+                </label>
+                <form id="category__search" class="category__item--inner" data-value="search">
+                    <input type="text" placeholder="Free quote search..." value="" name="Type" class="input"
+                           id="OWN" required="required" pattern="[a-zA-Z ]+">
+                </form>
+            </div>
+            <button class="category__item--button" type="button">
+                Chuck it up
+            </button>
+        </div>
+
+        <div class="container">
+            <div id="joke">
+            </div>
+        </div>
+    </div>
+
+    <div class="favourite__item">
+        <input type="checkbox" id="favourite" />
+        <label for="favourite" class="favourite">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <div class="favourite__nav">
+            <nav>
+                <div class="favourite__nav--header">
+                    Favourite
+                </div>
+                <ul class="favourite__list">
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<script src="bundle.js"></script></body>
+
+</html>
