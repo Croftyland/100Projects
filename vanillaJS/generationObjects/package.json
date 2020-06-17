@@ -34,6 +34,7 @@
     "@pixi/loaders": "^5.0.4",
     "@pixi/sprite": "^5.0.4",
     "@pixi/ticker": "^5.0.4",
-    "pixi-particles": "^4.2.1"
+    "pixi-particles": "^4.2.1",
+    "pixi.js": "^5.2.4"
   }
 }
