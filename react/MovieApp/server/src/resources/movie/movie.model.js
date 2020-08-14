@@ -11,15 +11,17 @@ const movieSchema = new mongoose.Schema(
     format: {
       type: String,
       required: true,
-      enum: ['VHS', 'DVD', 'Blue-Ray'],
+      enum: ['VHS', 'DVD', 'Blu-Ray'],
       default: 'DVD'
     },
     stars: {
+      type:[{
       type: String,
-      required: true,
-      trim: true,
       maxlength: 80
-    },
+    }],
+    required: true,
+    trim: true,
+  },
     year: {
       type: Number,
       required: true,
@@ -30,6 +32,6 @@ const movieSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-movieSchema.index({ list: 1, name: 1 }, { unique: true })
+movieSchema.index({ title: 1}, { unique: true })
 
 export const Movie = mongoose.model('movie', movieSchema)

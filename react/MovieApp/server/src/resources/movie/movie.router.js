@@ -25,4 +25,9 @@ router
   .put(controllers.update)
   .delete(controllers.remove)
 
+// /api/movie/upload
+router
+   .route('/upload')
+   .post(controllers.uploadFile)
+
 export default router

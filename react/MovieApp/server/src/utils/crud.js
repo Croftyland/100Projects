@@ -65,7 +65,8 @@ export const update = model => async (req, res) => {
 
 export const remove = model => async (req, res) => {
   try {
-    const removed = await model.findOneAndRemove({
+    const removed = await model
+    .findOneAndRemove({
       _id: req.params.id
     })
 
@@ -124,6 +125,51 @@ export const searchByTitle = model => async (req, res) => {
   }
 }
 
+export const uploadFile = model => async (req, res) =>{
+    
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send('No files were uploaded.');
+    }
+    try {
+      let movies = await parse(req.files.Movie.data.toString().trim());
+      
+      const upload = await model
+        .insertMany(movies)
+      
+      return res.status(200).json({ data: upload });
+     
+    } catch(error) {
+      res.status(400).send(error.message);
+    }
+
+};
+
+const parse = (file) => {
+	return new Promise (((resolve) => {
+		let moviesArray = [];
+		let movies = file.replace(/(\r\n|\n|\r)/gm, '\n').split(/^\s*\n/gm);
+		let pattern = /Title:\s*(.+?)\s*\nRelease Year:\s*(\d{4})\s*\nFormat:\s*(VHS|DVD|Blu-Ray)\s*\nStars:\s*(.*)/;
+
+		movies.forEach((str) => {
+			if (pattern.test(str)) {
+				const result = pattern.exec(str);
+
+				const movie = {
+					title: result[1],
+					year: parseInt(result[2], 10),
+					format: result[3],
+					stars: result[4].split(', ').map((name) => (name.trim()))
+				};
+
+				moviesArray.push(movie);
+			} else {
+				throw new Error('Invalid file');
+			}
+		});
+		resolve(moviesArray);
+	}));
+};
+
 export const crudControllers = model => ({
   create: create(model),
   remove: remove(model),
@@ -132,5 +178,5 @@ export const crudControllers = model => ({
   getAll: getAll(model),
   sortAll: sortAll(model),
   searchByTitle: searchByTitle(model),
-  uploadFile
+  uploadFile: uploadFile(model)
 })

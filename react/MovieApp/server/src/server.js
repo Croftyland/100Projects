@@ -3,6 +3,7 @@ import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
 import config from './config'
 import cors from 'cors'
+import fileUpload from 'express-fileupload';
 import { connect } from './utils/db'
 
 import movieRouter from './resources/movie/movie.router'
@@ -14,6 +15,7 @@ app.disable('x-powered-by')
 
 app.use(cors())
 app.use(json())
+app.use(fileUpload());
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
