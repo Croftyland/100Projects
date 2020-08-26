@@ -1,21 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { onUploadMovies } from '../../actions';
 
 
 const handleSelectFile = (event) => {
     let file = event.currentTarget.files[0];
-    let reader = new FileReader();
 
-  reader.readAsText(file);
-
-  reader.onload = function() {
-    this.props.onUploadMovies (reader.result)
-  };
-
-  reader.onerror = function() {
-    console.log(reader.error);
-  };
+    const data = new FormData();
+    data.append('file', file, file.name);
+    
+    return axios.post("http://localhost:5000/api/movie/upload", data, {
+      })
+      .then(res => {
+        console.log(res.data)
+      })
 }
 
 const UploadMovies = (props) => {
