@@ -1,0 +1,198 @@
+.fill-form {
+	max-width: 90%;
+	margin: 0 auto;
+	margin-top:20px;
+	font-family: 'Lato', georgia;
+	font-size: 25px;
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(236, 181, 62, 0.95);
+	text-align: center;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+  }
+  .close {
+	font-size: 20px;
+    position: absolute;
+    top: 10px;
+    left: 60px;
+  }
+  label {
+	font-weight: 400;
+	cursor: pointer;
+	padding-left: 5px;
+  }
+  
+  input {
+	border: none;
+	outline: none;
+	border-radius: 0;
+	text-align: center;
+	background: none;
+	font-weight: 700;
+	font-family: 'Lato', georgia;
+	font-size: 25px;
+	color: rgba(255, 255, 255, 1);
+	max-width: 90%;
+	padding: 1rem;
+	border: 2px dashed rgba(255, 255, 255, 0);
+	box-sizing: border-box;
+	cursor: text;
+  }
+
+  .add-button, .remove-button, .submit-button {
+	  background-color: darkcyan;
+  }
+  
+ 
+  input {
+	border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+  }
+  
+  input:required
+ {
+	border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+  }
+  
+  input:focus {
+	border-bottom: 2px dashed rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  
+  ::-webkit-input-placeholder {
+	text-align: center;
+	color: rgba(255, 255, 255, 0.4);
+	font-style: italic;
+	font-weight: 400;
+  }
+  
+  :-moz-placeholder {
+	
+	
+	text-align: center;
+	color: rgba(255, 255, 255, 0.4);
+	font-style: italic;
+	font-weight: 400;
+  }
+  
+  ::-moz-placeholder {
+
+	
+	text-align: center;
+	color: rgba(255, 255, 255, 0.4);
+	font-style: italic;
+	font-weight: 400;
+  }
+  
+  :-ms-input-placeholder {
+	text-align: center;
+	color: rgba(255, 255, 255, 0.4);
+	font-style: italic;
+	font-weight: 400;
+  }
+  
+  
+  button {
+	background: none;
+	border: none;
+	outline: none;
+	margin: 2vmax;
+  }
+  
+  button:hover small {
+	opacity: 1;
+  }
+  
+  small {
+	display: block;
+	opacity: 0;
+  }
+  
+  .website {
+	opacity: 1;
+	font-size: 16px;
+	color: white;
+	position: relative;
+	text-align: center;
+	display: block;
+	margin-top: 7%;
+	
+  }
+  
+  .website a {
+	color: white;
+  }
+
+  input.error {
+	border-color: red;
+  }
+  
+  
+  .input-feedback {
+	color: red;
+	margin-top: .25rem;
+  }
+  
+  button {
+	max-width: 150px;
+	margin: 20px 0;
+	padding: 12px 20px;
+	border-style: none;
+	border-radius: 5px;
+	background-color: #08c;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+	font-size: 17px;
+	font-weight: 500;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+	-webkit-appearance: none;
+  }
+  
+  button:disabled {
+	opacity: .5;
+	cursor: not-allowed !important;
+  }
+  
+  button + button {
+	margin-left: .5rem;
+  }
+  
+  button.outline {
+	background-color: #eee;
+	border: 1px solid #aaa;
+	color: #555;
+  }
+
+	  .toggle {
+		margin-bottom: 20px;
+	  }
+	  
+	  .toggle__label {
+		transition: all .25s ease;
+		display: inline-block;
+		border-radius: 5px;
+		background-color: #f2f2f2;
+		cursor: pointer;
+		padding: 0 30px;
+		min-width: 200px;
+		height: 48px;
+		line-height: 48px;
+		color: #a7a6ae;
+		text-align: center;
+	  }
+	  .toggle__input:checked + .toggle__label {
+		background-color: #e5702a;
+		color: white;
+	  }
+	  
+	  .toggle__input {
+		position: absolute;
+		left: -25px;
+	  }
+	  .inline-radio {
+		display: inline;
+		padding-left: 20px;
+  
+	  } 
+	 
