@@ -14,8 +14,8 @@ In the project directory, you can run:
 # Frontend part
 
 ``` 
-      $ cd client
-      $ yarn start 
+ $ cd client
+ $ yarn start 
 ```
 
 Runs the app in the development mode.<br />
@@ -33,11 +33,12 @@ will be work on [http://localhost:5000](http://localhost:5000)
 
 ## What was implemented
 
-✅ Create card
-✅ Find card by title or actor without changing option
-✅ Delete card
-✅ Upload
+✅ Create card<br/>
+✅ Find card by title or actor without changing option<br/>
+✅ Delete card<br/> 
+✅ Upload<br/>
+✅ UI design<br/>
 
 ## What should be modified
 
-➕ Sort cards 
+➕ Sort cards     
