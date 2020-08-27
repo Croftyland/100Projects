@@ -132,7 +132,7 @@ export const uploadFile = model => async (req, res) =>{
     }
     try {
       let movies = await parse(req.files.Movie.data.toString().trim());
-      
+
       const upload = await model
         .insertMany(movies)
       
