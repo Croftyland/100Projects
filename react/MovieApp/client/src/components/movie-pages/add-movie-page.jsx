@@ -17,7 +17,6 @@ const AddMoviePage = ({location}) => {
         <Modal/>
       </div>
     </div>
-
     );
 }
 

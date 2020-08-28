@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
+
 import axios from 'axios';
-import { onUploadMovies } from '../../actions';
 
 
 const handleSelectFile = (event) => {
@@ -17,8 +16,7 @@ const handleSelectFile = (event) => {
       })
 }
 
-const UploadMovies = (props) => {
-    console.log(props.onUploadMovies)
+const UploadMovies = () => {
         return (
                 <div className="container">
                      <div className="form-group">
@@ -32,14 +30,4 @@ const UploadMovies = (props) => {
               </div>
             );
           }
-const mapStateToProps = state => ({
-            file: state.file
-});
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onUploadMovies : (values) => dispatch(onUploadMovies(values)),
-    }
-}
-        
-export default connect( mapStateToProps,mapDispatchToProps)(UploadMovies );
+export default UploadMovies;
