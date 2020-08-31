@@ -8,12 +8,24 @@ import "./style.css";
 
 const MovieItem = ({ movie, onDelete }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const { _id, title, stars, format, year } = movie;
 
   const handleClick = () => {
     setIsFlipped(!isFlipped);
   };
 
-  const { _id, title, stars, format, year } = movie;
+  const deleteConfirmation = (event) => {
+      event.preventDefault()
+
+      if (
+          window.confirm(
+              `Do tou want to delete the movie ${title} permanently?`,
+          )
+      ) {
+          onDelete(_id)
+      }
+  }
+  
   return (
     <div className="movie-card">
       <div className="movie-content">
@@ -33,7 +45,7 @@ const MovieItem = ({ movie, onDelete }) => {
               Details
             </button>
             <button
-              onClick={() => onDelete(_id)}
+              onClick={(event) => deleteConfirmation(event)}
               className="movie-content__front--delete btn-outline-danger btn-sm float-right"
             >
               <i className="fa fa-trash-o" />
