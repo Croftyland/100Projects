@@ -5,15 +5,24 @@ import {
 	onSearch,
 } from '../../actions';
 import { connect } from 'react-redux';
+
+
   
 
 const SearchContainer = (props) => {
   const [query, setQuery] = useState('');
+
+  const _handleKeyPress = (event) => {
+   if (event.key === 'Enter') {
+      props.onSearch(query);
+   }
+ }
      return (
         <div className = "contain">
             <div className="search">
                  <input type="text" 
                         onChange={(event) => setQuery(event.target.value)}
+                        onKeyPress={(event) => _handleKeyPress(event)}
                         placeholder="Write something" 
                         className="search__input" />
                  <button
