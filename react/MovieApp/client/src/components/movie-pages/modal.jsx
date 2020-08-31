@@ -139,14 +139,14 @@ const ModalForm = (props) => {
           render={(arrayHelpers) => (
             <div>
               {values.stars && values.stars.length > 0 ? (
-                values.stars.map((index) => (
+                values.stars.map((star, index) => (
                   <div key={index}>
                     <label htmlFor="stars">Name of star</label>
                     <Field name={`stars.${index}`} />
                     <button
                       className="add-button"
                       type="button"
-                      onClick={() => arrayHelpers.insert(index)}
+                      onClick={() => arrayHelpers.insert(index, star)}
                     >
                       Add
                     </button>
@@ -192,7 +192,7 @@ const EnhancedForm = withFormik({
     title: "",
     year: "",
     format: "",
-    stars: [""],
+    stars: "",
   }),
   validationSchema: Yup.object().shape({
     title: Yup.string()
