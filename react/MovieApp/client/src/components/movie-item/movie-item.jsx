@@ -23,9 +23,9 @@ const MovieItem = ({ movie, onDelete }) => {
           )
       ) {
           onDelete(_id)
+          //window.location.reload()
       }
   }
-  
   return (
     <div className="movie-card">
       <div className="movie-content">

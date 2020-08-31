@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 import './style.css';
 
 import {
-	onSearch,
+   onSearch,
+   fetchMovies,
 } from '../../actions';
 import { connect } from 'react-redux';
 
-
-  
 
 const SearchContainer = (props) => {
   const [query, setQuery] = useState('');
 
   const _handleKeyPress = (event) => {
-   if (event.key === 'Enter') {
-      props.onSearch(query);
+   if (query !== '') {
+      if (event.key === 'Enter') {
+         props.onSearch(query);
+      }
+   } else {
+      props.fetchMovies();
    }
- }
+};
      return (
         <div className = "contain">
             <div className="search">
@@ -41,6 +44,7 @@ const SearchContainer = (props) => {
 const mapDispatchToProps = dispatch => {
      return {
         onSearch: (values) => dispatch(onSearch(values)),
+        fetchMovies:() => dispatch(fetchMovies())
      }
  }
 
