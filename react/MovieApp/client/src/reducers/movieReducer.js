@@ -1,5 +1,6 @@
 const initialState = {
 	movies: [],
+	error: null
 }
 
 export default (state= initialState, action) => {
@@ -9,7 +10,12 @@ export default (state= initialState, action) => {
 		 case 'FETCH_MOVIE':
 		  return {
 			movies: action.payload,
-			};
+		};
+		case 'FETCH_MOVIE_FAILURE':
+		return {
+		  movies: [],
+		  error: action.payload
+		};	
 		case 'SORT_MOVIE_BY_TITLE':
 		  return {
 			...state,  

@@ -77,6 +77,8 @@ const ModalForm = (props) => {
     handleBlur,
     handleSubmit,
     handleReset,
+    setErrors,
+    formReset
   } = props;
   return (
     <div className="fill-form">
@@ -98,7 +100,7 @@ const ModalForm = (props) => {
           and{" "}
         </p>
         {errors.title && touched.title && (
-          <div className="input-feedback">{errors.title}</div>
+          <div className="input-feedback">Such {errors.title} has already been created</div>
         )}
         <p>
           it <label htmlFor="year">was filmed</label> in
@@ -198,17 +200,17 @@ const EnhancedForm = withFormik({
     title: Yup.string()
       .max(28, "Must be 2 characters or less")
       .required("Required"),
-    year: Yup.number().min(4, "Min 4 chars").required("Please supply year"),
+    year: Yup.number().min(1800, "Incorrect year").max(2200, "Incorrect year").required("Please supply year"),
     format: Yup.string().required("A radio option is required"),
     actors: Yup.array().of(
       Yup.object().shape({
-        name: Yup.string().max(28, "Max 28 chars"),
-        name: Yup.string().min(2, "Min 2 chars"),
+        name: Yup.string().min(2, "Min 2 chars").max(28, "Max 28 chars"),
       })
     ),
   }),
-  handleSubmit(values, { props, setSubmitting }) {
-    props.dispatch(onSubmitOne(values));
+  handleSubmit(values, { props, setErrors, setSubmitting }) {
+    setErrors({title: values.title},'Such card was already submitted')
+    props.dispatch(onSubmitOne(values, setErrors));
     setSubmitting(false);
   },
 })(ModalForm);
