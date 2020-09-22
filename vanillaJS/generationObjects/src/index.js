@@ -2,7 +2,7 @@
 import {Application} from '@pixi/app'
 
 // In order that PIXI could render things we need to register appropriate plugins
-import {Renderer, Texture} from '@pixi/core'
+import {Renderer} from '@pixi/core'
 import * as PIXI from 'pixi.js' //Renderer is the class that is going to register plugins
 
 import {BatchRenderer} from '@pixi/core' // BatchRenderer is the "plugin" for drawing sprites
@@ -11,113 +11,199 @@ Renderer.registerPlugin('batch', BatchRenderer)
 // And just for convenience let's register Loader plugin in order to use it right from Application instance like app.loader.add(..) etc.
 import {AppLoaderPlugin} from '@pixi/loaders'
 
+import { Sprite } from '@pixi/sprite'
+
 Application.registerPlugin(AppLoaderPlugin)
 
+
 // Sprite is our image on the stage
-import {Sprite} from '@pixi/sprite'
-
-
-const app = new Application({
-	antialias: true,
-	width: window.innerWidth,
-	height: window.innerHeight
-})
-
+const app = new PIXI.Application({ width: 800, height: 450 });
 document.body.appendChild(app.view);
 
-app.loader.load(() => {
+const background = Sprite.from('./assets/BG.png');
+background.width = app.screen.width;
+background.height = app.screen.height;
+app.stage.addChild(background);
 
-	const graphics = new PIXI.Graphics();
+app.loader
+	.add('./assets/Bet_Line.png', './assets/Bet_Line.png')
+	.add('./assets/BG.png', './assets/BG.png')
+	.add('./assets/BTN_Spin_d.png', './assets/BTN_Spin_d.png')
+	.add('./assets/BTN_Spin.png', './assets/BTN_Spin.png')
+    .add('./assets/SYM1.png', './assets/SYM1.png')
+    .add('./assets/SYM3.png', './assets/SYM3.png')
+    .add('./assets/SYM4.png', './assets/SYM4.png')
+	.add('./assets/SYM5.png', './assets/SYM5.png')
+	.add('./assets/SYM6.png', './assets/SYM6.png')
+	.add('./assets/SYM7.png', './assets/SYM7.png')
+    .load(onAssetsLoaded);
 
-// Rectangle
-	graphics.beginFill(0xDE3249);
-	graphics.drawRect(50, 50, 100, 100);
-	graphics.endFill();
+const REEL_WIDTH = 200;
+const SYMBOL_SIZE = 155;
 
-// Rectangle + line style 1
-	graphics.lineStyle(2, 0xFEEB77, 1);
-	graphics.beginFill(0x650A5A);
-	graphics.drawRect(200, 50, 100, 100);
-	graphics.endFill();
+// onAssetsLoaded handler builds the example.
+function onAssetsLoaded() {
+    // Create different slot symbols.
+    const slotTextures = [
+        PIXI.Texture.from('./assets/SYM1.png'),
+        PIXI.Texture.from('./assets/SYM3.png'),
+        PIXI.Texture.from('./assets/SYM4.png'),
+		PIXI.Texture.from('./assets/SYM5.png'),
+		PIXI.Texture.from('./assets/SYM6.png'),
+		PIXI.Texture.from('./assets/SYM7.png'),
+	];
 
-// Rectangle + line style 2
-	graphics.lineStyle(10, 0xFFBD01, 1);
-	graphics.beginFill(0xC34288);
-	graphics.drawRect(350, 50, 100, 100);
-	graphics.endFill();
+	
+	app.loader.load(() => {
+    const sprite = Sprite.from('./assets/BTN_Spin.png')
+    sprite.anchor.set(0.5) // We want to rotate our sprite relative to the center, so 0.5
+    app.stage.addChild(sprite)
 
-// Rectangle 2
-	graphics.lineStyle(2, 0xFFFFFF, 1);
-	graphics.beginFill(0xAA4F08);
-	graphics.drawRect(530, 50, 140, 100);
-	graphics.endFill();
+    // Position the sprite at the center of the stage
+    sprite.x = app.screen.width * 0.91
+    sprite.y = app.screen.height * 0.5
 
-// Circle
-	graphics.lineStyle(0); // draw a circle, set the lineStyle to zero so the circle doesn't have an outline
-	graphics.beginFill(0xDE3249, 1);
-	graphics.drawCircle(100, 250, 50);
-	graphics.endFill();
+    // Put the rotating function into the update loop
+    app.ticker.add(delta => {
+        sprite.rotation += 0.02 * delta
+	})
+	sprite.interactive = true;
+    sprite.buttonMode = true;
+    sprite.addListener('pointerdown', () => {
+        startPlay();
+    });
+})
+	
+    // Build the reels
+    const reels = [];
+	const reelContainer = new PIXI.Container();
+	reelContainer.x = app.screen.width * 0.1
+	reelContainer.y = app.screen.height * 0.05
+    for (let i = 0; i < 3; i++) {
+        const rc = new PIXI.Container();
+        rc.x = i * REEL_WIDTH;
+        reelContainer.addChild(rc);
 
-// Circle + line style 1
-	graphics.lineStyle(2, 0xFEEB77, 1);
-	graphics.beginFill(0x650A5A, 1);
-	graphics.drawCircle(250, 250, 50);
-	graphics.endFill();
+        const reel = {
+            container: rc,
+            symbols: [],
+            position: 0,
+            previousPosition: 0,
+            blur: new PIXI.filters.BlurFilter(),
+        };
+        reel.blur.blurX = 0;
+        reel.blur.blurY = 0;
+        rc.filters = [reel.blur];
 
-// Circle + line style 2
-	graphics.lineStyle(10, 0xFFBD01, 1);
-	graphics.beginFill(0xC34288, 1);
-	graphics.drawCircle(400, 250, 50);
-	graphics.endFill();
-
-// Ellipse + line style 2
-	graphics.lineStyle(2, 0xFFFFFF, 1);
-	graphics.beginFill(0xAA4F08, 1);
-	graphics.drawEllipse(600, 250, 80, 50);
-	graphics.endFill();
-
-// draw a shape
-	graphics.beginFill(0xFF3300);
-	graphics.lineStyle(4, 0xffd900, 1);
-	graphics.moveTo(50, 350);
-	graphics.lineTo(250, 350);
-	graphics.lineTo(100, 400);
-	graphics.lineTo(50, 350);
-	graphics.closePath();
-	graphics.endFill();
-
-// draw a rounded rectangle
-	graphics.lineStyle(2, 0xFF00FF, 1);
-	graphics.beginFill(0x650A5A, 0.25);
-	graphics.drawRoundedRect(50, 440, 100, 100, 16);
-	graphics.endFill();
-
-// draw star
-	graphics.lineStyle(2, 0xFFFFFF);
-	graphics.beginFill(0x35CC5A, 1);
-	graphics.drawStar(360, 370, 5, 50);
-	graphics.endFill();
-
-// draw star 2
-	graphics.lineStyle(2, 0xFFFFFF);
-	graphics.beginFill(0xFFCC5A, 1);
-	graphics.drawStar(280, 510, 7, 50);
-	graphics.endFill();
-
-// draw star 3
-	graphics.lineStyle(4, 0xFFFFFF);
-	graphics.beginFill(0x55335A, 1);
-	graphics.drawStar(470, 450, 4, 50);
-	graphics.endFill();
-
-// draw polygon
-	const path = [600, 370, 700, 460, 780, 420, 730, 570, 590, 520];
-
-	graphics.lineStyle(0);
-	graphics.beginFill(0x3500FA, 1);
-	graphics.drawPolygon(path);
-	graphics.endFill();
+        // Build the symbols
+        for (let j = 0; j < 4; j++) {
+            const symbol = new PIXI.Sprite(slotTextures[Math.floor(Math.random() * slotTextures.length)]);
+            // Scale the symbol to fit symbol area.
+            symbol.y = j * SYMBOL_SIZE;
+            symbol.scale.x = symbol.scale.y = Math.min(SYMBOL_SIZE / symbol.width, SYMBOL_SIZE / symbol.height);
+            symbol.x = Math.round((SYMBOL_SIZE - symbol.width) / 3);
+            reel.symbols.push(symbol);
+            rc.addChild(symbol);
+        }
+        reels.push(reel);
+    }
+    app.stage.addChild(reelContainer);
 
 
-	app.stage.addChild(graphics);
+    let running = false;
+
+    // Function to start playing.
+    function startPlay() {
+        if (running) return;
+        running = true;
+
+        for (let i = 0; i < reels.length; i++) {
+            const r = reels[i];
+            const extra = Math.floor(Math.random() * 3);
+            const target = r.position + 10 + i * 5 + extra;
+            const time = 2500 + i * 600 + extra * 600;
+            tweenTo(r, 'position', target, time, backout(0.5), null, i === reels.length - 1 ? reelsComplete : null);
+        }
+    }
+
+    // Reels done handler.
+    function reelsComplete() {
+        running = false;
+    }
+
+    // Listen for animate update.
+    app.ticker.add((delta) => {
+    // Update the slots.
+        for (let i = 0; i < reels.length; i++) {
+            const r = reels[i];
+            // Update blur filter y amount based on speed.
+            // This would be better if calculated with time in mind also. Now blur depends on frame rate.
+            r.blur.blurY = (r.position - r.previousPosition) * 8;
+            r.previousPosition = r.position;
+
+            // Update symbol positions on reel.
+            for (let j = 0; j < r.symbols.length; j++) {
+                const s = r.symbols[j];
+                const prevy = s.y;
+                s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE;
+                if (s.y < 0 && prevy > SYMBOL_SIZE) {
+                    // Detect going over and swap a texture.
+                    // This should in proper product be determined from some logical reel.
+                    s.texture = slotTextures[Math.floor(Math.random() * slotTextures.length)];
+                    s.scale.x = s.scale.y = Math.min(SYMBOL_SIZE / s.texture.width, SYMBOL_SIZE / s.texture.height);
+                    s.x = Math.round((SYMBOL_SIZE - s.width) / 2);
+                }
+            }
+        }
+    });
+}
+
+// Very simple tweening utility function. This should be replaced with a proper tweening library in a real product.
+const tweening = [];
+function tweenTo(object, property, target, time, easing, onchange, oncomplete) {
+    const tween = {
+        object,
+        property,
+        propertyBeginValue: object[property],
+        target,
+        easing,
+        time,
+        change: onchange,
+        complete: oncomplete,
+        start: Date.now(),
+    };
+
+    tweening.push(tween);
+    return tween;
+}
+// Listen for animate update.
+app.ticker.add((delta) => {
+    const now = Date.now();
+    const remove = [];
+    for (let i = 0; i < tweening.length; i++) {
+        const t = tweening[i];
+        const phase = Math.min(1, (now - t.start) / t.time);
+
+        t.object[t.property] = lerp(t.propertyBeginValue, t.target, t.easing(phase));
+        if (t.change) t.change(t);
+        if (phase === 1) {
+            t.object[t.property] = t.target;
+            if (t.complete) t.complete(t);
+            remove.push(t);
+        }
+    }
+    for (let i = 0; i < remove.length; i++) {
+        tweening.splice(tweening.indexOf(remove[i]), 1);
+    }
 });
+
+// Basic lerp funtion.
+function lerp(a1, a2, t) {
+    return a1 * (1 - t) + a2 * t;
+}
+
+// Backout function from tweenjs.
+// https://github.com/CreateJS/TweenJS/blob/master/src/tweenjs/Ease.js
+function backout(amount) {
+    return (t) => (--t * t * ((amount + 1) * t + amount) + 1);
+}

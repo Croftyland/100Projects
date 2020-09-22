@@ -10,9 +10,9 @@ module.exports = {
 	devtool: 'inline-source-map',
 	plugins: [
 		new CopyWebpackPlugin([{
-			from: 'build/assets',
-			to: 'assets'
-		}]),
+            from: 'build/assets',
+            to: 'assets'
+        }]),
 		new HTMLWebpackPlugin({
 			template: 'build/index.html',
 			filename: 'index.html'
