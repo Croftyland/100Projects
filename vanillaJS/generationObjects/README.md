@@ -1,24 +1,22 @@
-## shape Generator
+# simple slot game
 
+Run the project after commands below
 
-Install dependencies:
-```
-yarn i
-```
+![alt text](http://url/to/img.png)
 
-Run on http://localhost:3000:
-```
-yarn start
-```
+### `yarn build`
 
-#### Building
+### `yarn start`
 
-Development build:
-```
-yarn run build
-```
+## Combinations for victory
 
-Production build:
-```
-yarn run production
-```
+* any horizontal line contains 3 same symbols - win
+* 3 wilds – loss
+* 1 any symbol and 2 wilds – win
+* 2 any same symbols and 1 wild – win
+
+## should be fixed
+
+* mask for game 
+* reset game when it's over
+
