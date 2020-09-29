@@ -5,10 +5,10 @@ import Phrases from './phrases.js'
 
 
 export default class Drum {
-    constructor(toggleButton,resources, phrases) {
+    constructor(phrases,resources, toogleButton) {
         this.phrases = phrases;
-        this.toggleButton = toggleButton;
         this.resources = resources;
+        this.toogleButton = toogleButton;
         this.x = 125;
         this.y = 10;
         this.delayStop = 500;
@@ -16,7 +16,7 @@ export default class Drum {
     
         this.gameResults = []
         this.drums = Array.from({ length: 3 }, () => new DrumsItem(this.resources));
-        this.phrases = new Phrases();
+        this.phrases = new Phrases(this.toogleButton.bind(this));
         this.container = new PIXI.Container();
         this.container.x = this.x;
         this.container.y = this.y;

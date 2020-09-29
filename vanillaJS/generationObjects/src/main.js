@@ -3,6 +3,7 @@ import * as PIXI from "pixi.js";
 import Button from './button.js'
 import Canvas from './canvas.js'
 import Controller from './controller.js'
+import Phrases from './phrases.js'
 import Drums from './drums.js'
 import Loader from './loader.js'
 
@@ -34,7 +35,7 @@ export default class App extends Controller {
     }
 
     createDrum() {
-        this.drums = new Drums(this.stageAdd.bind(this), this.app.loader.resources, this.toogleButton.bind(this) );
+        this.drums = new Drums(this.stageAdd.bind(this), this.app.loader.resources, this.toogleButton.bind(this));
         this.stageAdd(this.drums.container);
     }
 

@@ -1,9 +1,9 @@
 import * as PIXI from "pixi.js";
 
 export default class Phrases {
-    constructor(showWinningText) {
+    constructor(toggleButton) {
 		this.container = new PIXI.Container();
-		this.showWinningText = showWinningText;
+		this.toggleButton = toggleButton;
         this.money = 5;
         this.bet = 5;
         this.width = 100;
@@ -108,6 +108,6 @@ export default class Phrases {
 	resetBalance(){
         this.money = 10;
 		this.updateText();
-	
+		this.toggleButton();
     }
 }
