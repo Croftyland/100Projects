@@ -1,8 +1,10 @@
-# simple slot game
+# Simple slot game
 
 Run the project after commands below
 
-![alt text](http://url/to/img.png)
+How game looks like
+
+![alt text](https://github.com/Croftyland/100Projects/blob/master/vanillaJS/generationObjects/resources/Screenshot%202020-09-29%20at%2015.54.08.png)
 
 ### `yarn build`
 
@@ -15,7 +17,7 @@ Run the project after commands below
 * 1 any symbol and 2 wilds – win
 * 2 any same symbols and 1 wild – win
 
-## should be fixed
+## Should be fixed
 
 * mask for game 
 * reset game when it's over
