@@ -1,0 +1,20 @@
+
+  {
+    "parser": "@typescript-eslint/parser",
+    "extends": "airbnb",
+    "plugins": [ "react","@typescript-eslint"],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "react/jsx-filename-extension": 0,
+      "no-use-before-define":0,
+      "newline-after-import": 0,
+      "eslint-disable-next-line":0,
+      "import/newline-after-import":0,
+      "semi": ["error", "never"],
+      "quotes": [2, "single"]
+    }
+  }
