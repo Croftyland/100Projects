@@ -1,44 +1,91 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+Who Wants to Be a Millioner
+</h1>
+<p align="center">
+React, Typescript
+</p>
 
-## Available Scripts
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) 
 
-In the project directory, you can run:
 
-### `yarn start`
+Who Wants to Be a Millioner is an web app implementation of the basic game functionality with React/Typescript Stack.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - Quiz game
+  - Start/Finish component
+  - Dark Theme UI
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.carlrippon.com%2Fwhy-typescript-with-react%2F&psig=AOvVaw0Gga6xhk3soEXd05YxQcTm&ust=1601585134138000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjOlNvfkewCFQAAAAAdAAAAABAD />
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Features!
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tech
+Who Wants to Be a Millioner uses a number of open source projects to work properly:
+* [Typescript](https://www.typescriptlang.org/) -  is a language for application-scale JavaScript.
+* [ReactJS](https://reactjs.org/) - is a JavaScript library for building user interfaces.
+* [Webpack](https://webpack.js.org) - is a static module bundler for modern JavaScript applications.
+* [ESlint](https://nodejs.org/) - is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install the dependencies and devDependencies
 
-### `yarn eject`
+```sh
+$ git clone https://github.com/Croftyland/100Projects.git
+$ cd react/wwbm-clone
+$ yarn
+$ yarn build 
+$ yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Start the client.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+$ cd react/wwbm-clone
+$ yarn
+$ yarn build 
+$ yarn start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Plugins
 
-## Learn More
+Cinema + is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Client
+
+| Plugin | README |
+| ------ | ------ |
+
+
+
+| jspdf | [plugins/jspdf/README.md](https://github.com/MrRio/jsPDF) |
+| react | [plugins/react/README.md](https://github.com/facebook/react/blob/master/README.md) |
+| react-router-dom | [plugins/react-router/README.md](https://github.com/ReactTraining/react-router/blob/master/README.md) |
+
+
+### Todos
+
+
+
+
+# Screenshots! 
+
+Main Page
+<img />
+
+<details>
+  <summary>More Screenshots</summary>
+  Quiz Page
+  <img src="" />
+
+</details>
+
+
+
+License
+----
+
+MIT
