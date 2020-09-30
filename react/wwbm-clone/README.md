@@ -51,7 +51,7 @@ $ yarn start
 
 ### Plugins
 
-Cinema + is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
+Who Wants to Be a Millioner is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
 
 
 ### Client
