@@ -1,40 +1,45 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
-  entry: "./src/components/index.tsx",
-  target: "web",
-  mode: "development",
+  entry: './src/index.tsx',
+  target: 'web',
+  mode: 'development',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        loader: "awesome-typescript-loader",
-      },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader",
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
       },
       {
         test: /\.css$/,
-        loader: "css-loader",
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 25000,
+          },
+        },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "components", "index.html"),
-    }),
-    new MiniCssExtractPlugin({
-      filename: "./src/App.css",
+      template: `${__dirname}/public/index.html`,
     }),
   ],
-};
+  devServer: {
+    contentBase: './public',
+    port: 8080,
+  },
+}
