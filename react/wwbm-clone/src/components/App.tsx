@@ -1,7 +1,19 @@
 import * as React from 'react'
-export interface HelloWorldProps {
-  userName: string;
-  lang: string;
+import './App.css'
+import logo from '../images/hand.svg'
+export interface StartGameProps {
+  phrase?: string
 }
-export const App = (props: HelloWorldProps) => (
-  <h1>Hi {props.userName} from React! Welcome to {props.lang}!</h1>);
+
+export function App({
+  phrase = 'Who wants to be a millionaire?',
+}: StartGameProps) {
+  return (
+    <div>
+      <header className="App-header">
+        {phrase}
+      </header>
+      <img src={logo} className="App-logo" alt="logo" />
+    </div>
+  )
+}
