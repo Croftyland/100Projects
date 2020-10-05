@@ -24,14 +24,11 @@
       "newline-after-import": 0,
       "eslint-disable-next-line":0,
       "import/newline-after-import":0,
-     
       "quotes": [2, "single"],
       "semi": ["error", "never"],
     "import/no-unresolved": 0,
-    "import/extensions": ["error", "ignorePackages", {
+    "import/extensions": [0, "ignorePackages", {
       "js": "never",
-      "mjs": "never",
-      "jsx": "never",
       "ts": "never",
       "tsx": "never"
     }],
