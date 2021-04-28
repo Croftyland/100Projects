@@ -1,15 +1,8 @@
-import React from 'react';
-import MovieListContainer from '../movie-list';
-import MovieSearch from '../movie-search';
-
+import React from "react";
+import MovieListContainer from "../movie-container";
 
 const HomePage = () => {
-  return (
-    <div>
-       <MovieSearch/>
-       <MovieListContainer /> 
-    </div>
-  );
+  return <MovieListContainer />;
 };
 
 export default HomePage;

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 
-import { onDelete } from "../../actions";
-import { connect } from "react-redux";
-
 import "./style.css";
 
 const MovieItem = ({ movie, onDelete }) => {
@@ -15,17 +12,15 @@ const MovieItem = ({ movie, onDelete }) => {
   };
 
   const deleteConfirmation = (event) => {
-      event.preventDefault()
+    event.preventDefault();
 
-      if (
-          window.confirm(
-              `Do tou want to delete the movie ${title} permanently?`,
-          )
-      ) {
-          onDelete(_id)
-          //window.location.reload()
-      }
-  }
+    if (
+      window.confirm(`Do tou want to delete the movie ${title} permanently?`)
+    ) {
+      onDelete(_id);
+      //window.location.reload()
+    }
+  };
   return (
     <div className="movie-card">
       <div className="movie-content">
@@ -75,14 +70,5 @@ const MovieItem = ({ movie, onDelete }) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
-  return { movies: state.movies };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onDelete: (_id) => dispatch(onDelete(_id)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieItem);
+export default MovieItem;

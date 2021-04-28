@@ -1,23 +1,24 @@
-import React from 'react';
-import {
-  Link
-} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import Modal from "./modal";
 
-import './style.css';
+import "./style.css";
 
-
-const AddMoviePage = ({location}) => {
+const AddMoviePage = ({ location }) => {
   const { state = {} } = location;
-  const { modal} = state;
+  const { modal } = state;
   return (
     <div className={modal ? "modal-state" : undefined}>
-      {modal && <Link to="/"><span className="close">Close modal</span></Link>}
+      {modal && (
+        <Link to="/">
+          <span className="close">X</span>
+        </Link>
+      )}
       <div>
-        <Modal/>
+        <Modal />
       </div>
     </div>
-    );
-}
+  );
+};
 
 export default AddMoviePage;
